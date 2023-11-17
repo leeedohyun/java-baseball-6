@@ -2,7 +2,7 @@ package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Computer {
+public class ComputerNumber {
 
     private static final String EMPTY_STRING = "";
 

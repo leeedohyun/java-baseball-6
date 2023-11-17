@@ -1,8 +1,8 @@
 package baseball.controller;
 
-import baseball.model.Computer;
+import baseball.model.ComputerNumber;
 import baseball.model.Constants;
-import baseball.model.Player;
+import baseball.model.PlayerNumber;
 import baseball.model.Referee;
 import baseball.model.Validation;
 import baseball.view.InputView;
@@ -10,9 +10,8 @@ import baseball.view.OutputView;
 
 public class BaseballGameController {
 
-    private final Computer computer = new Computer();
+    private final ComputerNumber computerNumber = new ComputerNumber();
     private Referee referee;
-    private Player player;
 
     public void play() {
         OutputView.printBaseballGameStartMessage();
@@ -24,12 +23,12 @@ public class BaseballGameController {
     }
 
     private void playSingleBaseballGame() {
-        String randomNumbers = computer.generateRandomNumbers();
+        String randomNumbers = computerNumber.generateRandomNumbers();
 
         do {
             OutputView.printMessageToInputNumbers();
-            player = new Player(InputView.inputNumbers());
-            referee = Referee.calculateBallAndStrikeNumber(randomNumbers, player.getNumber());
+            PlayerNumber playerNumber = new PlayerNumber(InputView.inputNumbers());
+            referee = Referee.calculateBallAndStrikeNumber(randomNumbers, playerNumber.getPlayerNumber());
             determineResult();
         } while (!referee.isThreeStrike());
     }
