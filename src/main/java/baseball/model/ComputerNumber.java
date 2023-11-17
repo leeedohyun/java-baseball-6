@@ -1,32 +1,21 @@
 package baseball.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class ComputerNumber {
 
     private static final String EMPTY_STRING = "";
 
-    private String randomNumbers;
+    private String computerNumber = EMPTY_STRING;
 
-    public String generateRandomNumbers() {
-        randomNumbers = EMPTY_STRING;
-
-        while (Validation.isNotThreeNumber(randomNumbers)) {
-            String randomNumber = String.valueOf(
-                    Randoms.pickNumberInRange(Constants.START_NUMBER, Constants.END_NUMBER));
-
-            addIfNotSame(randomNumber);
-        }
-        return randomNumbers;
+    public ComputerNumber() {
+        this.computerNumber = generateRandomNumbers();
     }
 
-    private void addIfNotSame(String randomNumber) {
-        if (!isSameNumber(randomNumber)) {
-            randomNumbers += randomNumber;
-        }
+    private String generateRandomNumbers() {
+        final RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.create();
+        return randomNumberGenerator.getStringRandomNumbers();
     }
 
-    private boolean isSameNumber(String randomNumber) {
-        return randomNumbers.contains(randomNumber);
+    public String getComputerNumber() {
+        return computerNumber;
     }
 }

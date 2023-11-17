@@ -10,7 +10,6 @@ import baseball.view.OutputView;
 
 public class BaseballGameController {
 
-    private final ComputerNumber computerNumber = new ComputerNumber();
     private Referee referee;
 
     public void play() {
@@ -23,7 +22,8 @@ public class BaseballGameController {
     }
 
     private void playSingleBaseballGame() {
-        String randomNumbers = computerNumber.generateRandomNumbers();
+        final ComputerNumber computerNumber = new ComputerNumber();
+        final String randomNumbers = computerNumber.getComputerNumber();
 
         do {
             OutputView.printMessageToInputNumbers();
