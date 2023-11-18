@@ -45,7 +45,7 @@ public class Validation {
     }
 
     private static void validateThatInputIsNumeric(final String numbers) {
-        if (!isNumeric(numbers)) {
+        if (isNotNumeric(numbers)) {
             throw new IllegalArgumentException(NON_NUMERIC_EXCEPTION_MESSAGE);
         }
     }
@@ -62,12 +62,12 @@ public class Validation {
         }
     }
 
-    private static boolean isNumeric(final String numbers) {
+    private static boolean isNotNumeric(final String numbers) {
         try {
             Integer.parseInt(numbers);
-            return true;
-        } catch (final NumberFormatException e) {
             return false;
+        } catch (final NumberFormatException e) {
+            return true;
         }
     }
 }
