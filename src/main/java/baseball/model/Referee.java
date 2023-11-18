@@ -12,7 +12,7 @@ public class Referee {
         this.ballNumber = ballNumber;
     }
 
-    public static Referee calculateBallAndStrikeNumber(String randomNumbers, String inputNumbers) {
+    public static Referee calculateBallAndStrikeNumber(final String randomNumbers, final String inputNumbers) {
         return new Referee(calculateStrikeNumbers(randomNumbers, inputNumbers),
                 calculateBallNumbers(randomNumbers, inputNumbers));
     }
@@ -45,13 +45,13 @@ public class Referee {
         return ballNumber;
     }
 
-    private static int calculateStrikeNumbers(String randomNumbers, String inputNumbers) {
+    private static int calculateStrikeNumbers(final String randomNumbers, final String inputNumbers) {
         return (int) IntStream.range(Constants.ZERO, Constants.NUMBER_OF_NUMBERS)
                 .filter(index -> isSameNumberInSamePlace(randomNumbers.charAt(index), inputNumbers.charAt(index)))
                 .count();
     }
 
-    private static int calculateBallNumbers(String randomNumbers, String inputNumbers) {
+    private static int calculateBallNumbers(final String randomNumbers, final String inputNumbers) {
         return (int) IntStream.range(Constants.ZERO, Constants.NUMBER_OF_NUMBERS)
                 .filter(inputNumbersIndex ->
                         isRandomNumbersContainInputNumber(randomNumbers, inputNumbers.charAt(inputNumbersIndex)))
@@ -59,13 +59,13 @@ public class Referee {
                 .count();
     }
 
-    private static boolean isRandomNumbersContainInputNumber(String randomNumbers, char inputNumber) {
+    private static boolean isRandomNumbersContainInputNumber(final String randomNumbers, final char inputNumber) {
         return randomNumbers.chars()
                 .mapToObj(intStreamToCharacter -> (char) intStreamToCharacter)
                 .anyMatch(singleNumber -> isSameNumberInSamePlace(singleNumber, inputNumber));
     }
 
-    private static boolean isSameNumberInSamePlace(char randomNumber, char inputNumber) {
+    private static boolean isSameNumberInSamePlace(final char randomNumber, final char inputNumber) {
         return randomNumber == inputNumber;
     }
 }

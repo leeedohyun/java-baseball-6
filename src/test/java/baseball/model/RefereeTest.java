@@ -33,7 +33,7 @@ class RefereeTest {
         final String inputNumbers = "132";
 
         // when
-        Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         // then
         Assertions.assertEquals(referee.getStrikeNumber(), ONE_STRIKE);
@@ -45,7 +45,7 @@ class RefereeTest {
         final String inputNumbers = "125";
 
         // when
-        Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         // then
         Assertions.assertEquals(referee.getStrikeNumber(), TWO_STRIKE);
@@ -57,7 +57,7 @@ class RefereeTest {
         final String inputNumbers = "123";
 
         // when
-        Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         // then
         Assertions.assertEquals(referee.getStrikeNumber(), THREE_STRIKE);
@@ -69,7 +69,7 @@ class RefereeTest {
         final String inputNumbers = "456";
 
         // when
-        Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         // then
         Assertions.assertEquals(referee.getBallNumber(), ZERO_BALL);
@@ -81,7 +81,7 @@ class RefereeTest {
         final String inputNumbers = "634";
 
         // when
-        Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         // then
         Assertions.assertEquals(referee.getBallNumber(), ONE_BALL);
@@ -93,7 +93,7 @@ class RefereeTest {
         final String inputNumbers = "632";
 
         // when
-        Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         // then
         Assertions.assertEquals(referee.getBallNumber(), TWO_BALL);
@@ -105,7 +105,7 @@ class RefereeTest {
         final String inputNumbers = "231";
 
         // when
-        Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
 
         // then
         Assertions.assertEquals(referee.getBallNumber(), THREE_BALL);
@@ -117,7 +117,7 @@ class RefereeTest {
         final String inputNumber = "456";
 
         // when
-        Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
 
         // then
         Assertions.assertTrue(referee.isNothing());
@@ -129,7 +129,7 @@ class RefereeTest {
         final String inputNumber = "216";
 
         // when
-        Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
 
         // then
         Assertions.assertTrue(referee.isOnlyBall());
@@ -141,7 +141,7 @@ class RefereeTest {
         final String inputNumber = "145";
 
         // when
-        Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
 
         // then
         Assertions.assertTrue(referee.isOnlyStrike());
@@ -153,7 +153,7 @@ class RefereeTest {
         final String inputNumber = "132";
 
         // when
-        Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
 
         // then
         Assertions.assertTrue(referee.isStrikeAndBall());
@@ -165,7 +165,7 @@ class RefereeTest {
         final String inputNumber = "123";
 
         // when
-        Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
 
         // then
         Assertions.assertTrue(referee.isThreeStrike());

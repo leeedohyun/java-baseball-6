@@ -23,15 +23,15 @@ public class OutputView {
         System.out.println(NOTHING);
     }
 
-    public static void printOnlyStrike(int strikeNumbers) {
+    public static void printOnlyStrike(final int strikeNumbers) {
         System.out.println(strikeNumbers + STRIKE);
     }
 
-    public static void printOnlyBall(int ballNumbers) {
+    public static void printOnlyBall(final int ballNumbers) {
         System.out.println(ballNumbers + BALL);
     }
 
-    public static void printBallAndStrike(int ballNumbers, int strikeNumbers) {
+    public static void printBallAndStrike(final int ballNumbers, final int strikeNumbers) {
         System.out.println(ballNumbers + BALL + BLANK_SPACE + strikeNumbers + STRIKE);
     }
 

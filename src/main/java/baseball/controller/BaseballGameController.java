@@ -27,14 +27,14 @@ public class BaseballGameController {
 
         do {
             OutputView.printMessageToInputNumbers();
-            PlayerNumber playerNumber = new PlayerNumber(InputView.inputNumbers());
+            final PlayerNumber playerNumber = new PlayerNumber(InputView.inputNumbers());
             referee = Referee.calculateBallAndStrikeNumber(randomNumbers, playerNumber.getPlayerNumber());
             determineResult();
         } while (!referee.isThreeStrike());
     }
 
     private boolean isRestart() {
-        String restartOrEndNumber = InputView.inputNumbers();
+        final String restartOrEndNumber = InputView.inputNumbers();
         Validation.validateRestartOrEnd(restartOrEndNumber);
 
         return Constants.GAME_RESTART_NUMBER.equals(restartOrEndNumber);
