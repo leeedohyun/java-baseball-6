@@ -43,12 +43,15 @@ public class BaseballGameController {
     private void determineResult() {
         if (referee.isNothing()) {
             OutputView.printNothing();
+            return;
         }
         if (referee.isOnlyBall()) {
             OutputView.printOnlyBall(referee.getBallNumber());
+            return;
         }
         if (referee.isOnlyStrike()) {
             OutputView.printOnlyStrike(referee.getStrikeNumber());
+            return;
         }
         if (referee.isStrikeAndBall()) {
             OutputView.printBallAndStrike(referee.getBallNumber(), referee.getStrikeNumber());
