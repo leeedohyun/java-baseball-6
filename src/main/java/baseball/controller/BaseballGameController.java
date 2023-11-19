@@ -4,7 +4,7 @@ import baseball.model.ComputerNumber;
 import baseball.model.Constants;
 import baseball.model.PlayerNumber;
 import baseball.model.Referee;
-import baseball.model.Validation;
+import baseball.model.InputNumberValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -35,7 +35,7 @@ public class BaseballGameController {
 
     private boolean isRestart() {
         final String restartOrEndNumber = InputView.inputNumbers();
-        Validation.validateRestartOrEnd(restartOrEndNumber);
+        InputNumberValidator.validateRestartOrEnd(restartOrEndNumber);
 
         return Constants.GAME_RESTART_NUMBER.equals(restartOrEndNumber);
     }

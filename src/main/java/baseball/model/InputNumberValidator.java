@@ -3,7 +3,7 @@ package baseball.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Validation {
+public class InputNumberValidator {
 
     private static final String SAME_NUMBER_EXCEPTION_MESSAGE = "같은 숫자를 입력할 수 없습니다.";
     private static final String NON_NUMERIC_EXCEPTION_MESSAGE = "숫자만 입력할 수 있습니다.";

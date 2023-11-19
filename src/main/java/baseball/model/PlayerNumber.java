@@ -5,7 +5,7 @@ public class PlayerNumber {
     private final String playerNumber;
 
     public PlayerNumber(final String playerNumber) {
-        Validation.validateInputThreeNumber(playerNumber);
+        InputNumberValidator.validateInputThreeNumber(playerNumber);
         this.playerNumber = playerNumber;
     }
 

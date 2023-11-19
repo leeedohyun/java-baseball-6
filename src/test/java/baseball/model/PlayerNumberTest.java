@@ -32,7 +32,7 @@ class PlayerNumberTest {
 
     @Test
     public void 재시작_또는_종료_숫자를_잘못_입력하면_예외_발생() {
-        assertThatThrownBy(() -> Validation.validateRestartOrEnd("3"))
+        assertThatThrownBy(() -> InputNumberValidator.validateRestartOrEnd("3"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
