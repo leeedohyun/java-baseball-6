@@ -30,12 +30,11 @@ public class BaseballGameController {
 
     private void playSingleBaseballGame() {
         final ComputerNumber computerNumber = new ComputerNumber();
-        final String randomNumbers = computerNumber.getComputerNumber();
 
         do {
             outputView.printMessageToInputNumbers();
             final PlayerNumber playerNumber = new PlayerNumber(inputView.inputNumbers());
-            referee = Referee.calculateBallAndStrikeNumber(randomNumbers, playerNumber.getPlayerNumber());
+            referee = Referee.calculateBallAndStrikeNumber(computerNumber, playerNumber);
             determineResult();
         } while (!referee.isThreeStrike());
     }

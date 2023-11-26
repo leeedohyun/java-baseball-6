@@ -9,6 +9,10 @@ public class PlayerNumber {
         this.playerNumber = playerNumber;
     }
 
+    public char getOneNumberByIndex(final int index) {
+        return playerNumber.charAt(index);
+    }
+
     public String getPlayerNumber() {
         return playerNumber;
     }

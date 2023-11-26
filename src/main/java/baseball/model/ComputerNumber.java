@@ -7,7 +7,7 @@ public class ComputerNumber {
     private String computerNumber = EMPTY_STRING;
 
     public ComputerNumber() {
-        this.computerNumber = generateRandomNumbers();
+        computerNumber = generateRandomNumbers();
     }
 
     private String generateRandomNumbers() {
@@ -15,7 +15,13 @@ public class ComputerNumber {
         return randomNumberGenerator.getStringRandomNumbers();
     }
 
-    public String getComputerNumber() {
-        return computerNumber;
+    public char getOneNumberByIndex(final int index) {
+        return computerNumber.charAt(index);
+    }
+
+    public boolean hasInputNumber(final char inputNumber) {
+        return computerNumber.chars()
+                .mapToObj(i -> (char) i)
+                .anyMatch(singleNumber -> singleNumber == inputNumber);
     }
 }

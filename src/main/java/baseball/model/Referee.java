@@ -12,9 +12,10 @@ public class Referee {
         this.ballNumber = ballNumber;
     }
 
-    public static Referee calculateBallAndStrikeNumber(final String randomNumbers, final String inputNumbers) {
-        return new Referee(calculateStrikeNumbers(randomNumbers, inputNumbers),
-                calculateBallNumbers(randomNumbers, inputNumbers));
+    public static Referee calculateBallAndStrikeNumber(final ComputerNumber computerNumber,
+                                                       final PlayerNumber playerNumber) {
+        return new Referee(calculateStrikeNumbers(computerNumber, playerNumber),
+                calculateBallNumbers(computerNumber, playerNumber));
     }
 
     public boolean isNothing() {
@@ -45,24 +46,20 @@ public class Referee {
         return ballNumber;
     }
 
-    private static int calculateStrikeNumbers(final String randomNumbers, final String inputNumbers) {
+    private static int calculateStrikeNumbers(final ComputerNumber computerNumber, final PlayerNumber playerNumber) {
         return (int) IntStream.range(Constants.ZERO, Constants.NUMBER_OF_NUMBERS)
-                .filter(index -> isSameNumberInSamePlace(randomNumbers.charAt(index), inputNumbers.charAt(index)))
+                .filter(index -> isSameNumberInSamePlace(computerNumber.getOneNumberByIndex(index),
+                        playerNumber.getOneNumberByIndex(index)))
                 .count();
     }
 
-    private static int calculateBallNumbers(final String randomNumbers, final String inputNumbers) {
+    private static int calculateBallNumbers(final ComputerNumber computerNumber, final PlayerNumber playerNumber) {
         return (int) IntStream.range(Constants.ZERO, Constants.NUMBER_OF_NUMBERS)
                 .filter(inputNumbersIndex ->
-                        isRandomNumbersContainInputNumber(randomNumbers, inputNumbers.charAt(inputNumbersIndex)))
-                .filter(index -> !isSameNumberInSamePlace(randomNumbers.charAt(index), inputNumbers.charAt(index)))
+                        computerNumber.hasInputNumber(playerNumber.getOneNumberByIndex(inputNumbersIndex)))
+                .filter(index -> !isSameNumberInSamePlace(computerNumber.getOneNumberByIndex(index),
+                        playerNumber.getOneNumberByIndex(index)))
                 .count();
-    }
-
-    private static boolean isRandomNumbersContainInputNumber(final String randomNumbers, final char inputNumber) {
-        return randomNumbers.chars()
-                .mapToObj(intStreamToCharacter -> (char) intStreamToCharacter)
-                .anyMatch(singleNumber -> isSameNumberInSamePlace(singleNumber, inputNumber));
     }
 
     private static boolean isSameNumberInSamePlace(final char randomNumber, final char inputNumber) {
