@@ -11,35 +11,35 @@ public class OutputView {
     public static final String RESTART_OR_END_INPUT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String ANSWER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-    public static void printBaseballGameStartMessage() {
+    public void printBaseballGameStartMessage() {
         System.out.println(BASEBALL_GAME_START_MESSAGE);
     }
 
-    public static void printMessageToInputNumbers() {
+    public void printMessageToInputNumbers() {
         System.out.print(INPUTTING_NUMBERS_MESSAGE);
     }
 
-    public static void printNothing() {
+    public void printNothing() {
         System.out.println(NOTHING);
     }
 
-    public static void printOnlyStrike(final int strikeNumbers) {
+    public void printOnlyStrike(final int strikeNumbers) {
         System.out.println(strikeNumbers + STRIKE);
     }
 
-    public static void printOnlyBall(final int ballNumbers) {
+    public void printOnlyBall(final int ballNumbers) {
         System.out.println(ballNumbers + BALL);
     }
 
-    public static void printBallAndStrike(final int ballNumbers, final int strikeNumbers) {
+    public void printBallAndStrike(final int ballNumbers, final int strikeNumbers) {
         System.out.println(ballNumbers + BALL + BLANK_SPACE + strikeNumbers + STRIKE);
     }
 
-    public static void printAnswerMessage() {
+    public void printAnswerMessage() {
         System.out.println(ANSWER_MESSAGE);
     }
 
-    public static void printRestartOrEndInputMessage() {
+    public void printRestartOrEndInputMessage() {
         System.out.println(RESTART_OR_END_INPUT_MESSAGE);
     }
 }
