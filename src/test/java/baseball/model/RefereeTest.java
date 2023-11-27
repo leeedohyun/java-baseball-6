@@ -1,7 +1,9 @@
 package baseball.model;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 class RefereeTest {
 
@@ -15,25 +17,34 @@ class RefereeTest {
     public static final int THREE_BALL = 3;
     public static final String RANDOM_NUMBER = "123";
 
+    private ComputerNumber computerNumber;
+
+    @BeforeEach
+    void beforeEach() {
+        final RandomNumberGenerator mock = Mockito.mock(RandomNumberGenerator.class);
+        Mockito.when(mock.getStringRandomNumbers()).thenReturn(RANDOM_NUMBER);
+        computerNumber = ComputerNumber.create(mock);
+    }
+
     @Test
     public void 제로_스트라이크_테스트() {
         // given
-        final String inputNumbers = "456";
+        final PlayerNumber playerNumber = new PlayerNumber("456");
 
         // when
-        Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(computerNumber, playerNumber);
 
         // then
-        Assertions.assertEquals(referee.getStrikeNumber(), ZERO_STRIKE);
+        Assertions.assertEquals(referee.getBallNumber(), ZERO_STRIKE);
     }
 
     @Test
     public void 원_스트라이크_테스트() {
         // given
-        final String inputNumbers = "132";
+        final PlayerNumber playerNumber = new PlayerNumber("132");
 
         // when
-        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(computerNumber, playerNumber);
 
         // then
         Assertions.assertEquals(referee.getStrikeNumber(), ONE_STRIKE);
@@ -42,10 +53,10 @@ class RefereeTest {
     @Test
     public void 투_스트라이크_테스트() {
         // given
-        final String inputNumbers = "125";
+        final PlayerNumber playerNumber = new PlayerNumber("125");
 
         // when
-        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(computerNumber, playerNumber);
 
         // then
         Assertions.assertEquals(referee.getStrikeNumber(), TWO_STRIKE);
@@ -54,10 +65,10 @@ class RefereeTest {
     @Test
     public void 쓰리_스트라이크_테스트() {
         // given
-        final String inputNumbers = "123";
+        final PlayerNumber playerNumber = new PlayerNumber("123");
 
         // when
-        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(computerNumber, playerNumber);
 
         // then
         Assertions.assertEquals(referee.getStrikeNumber(), THREE_STRIKE);
@@ -66,10 +77,10 @@ class RefereeTest {
     @Test
     public void 제로_볼_테스트() {
         // given
-        final String inputNumbers = "456";
+        final PlayerNumber playerNumber = new PlayerNumber("456");
 
         // when
-        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(computerNumber, playerNumber);
 
         // then
         Assertions.assertEquals(referee.getBallNumber(), ZERO_BALL);
@@ -78,10 +89,10 @@ class RefereeTest {
     @Test
     public void 원_볼_테스트() {
         // given
-        final String inputNumbers = "634";
+        final PlayerNumber playerNumber = new PlayerNumber("634");
 
         // when
-        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(computerNumber, playerNumber);
 
         // then
         Assertions.assertEquals(referee.getBallNumber(), ONE_BALL);
@@ -90,10 +101,10 @@ class RefereeTest {
     @Test
     public void 투_볼_테스트() {
         // given
-        final String inputNumbers = "632";
+        final PlayerNumber playerNumber = new PlayerNumber("632");
 
         // when
-        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(computerNumber, playerNumber);
 
         // then
         Assertions.assertEquals(referee.getBallNumber(), TWO_BALL);
@@ -102,10 +113,10 @@ class RefereeTest {
     @Test
     public void 쓰리_볼_테스트() {
         // given
-        final String inputNumbers = "231";
+        final PlayerNumber playerNumber = new PlayerNumber("231");
 
         // when
-        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumbers);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(computerNumber, playerNumber);
 
         // then
         Assertions.assertEquals(referee.getBallNumber(), THREE_BALL);
@@ -114,10 +125,10 @@ class RefereeTest {
     @Test
     public void 낫싱_판별_테스트() {
         // given
-        final String inputNumber = "456";
+        final PlayerNumber playerNumber = new PlayerNumber("456");
 
         // when
-        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(computerNumber, playerNumber);
 
         // then
         Assertions.assertTrue(referee.isNothing());
@@ -126,10 +137,10 @@ class RefereeTest {
     @Test
     public void 볼만_있는_경우_판별_테스트() {
         // given
-        final String inputNumber = "216";
+        final PlayerNumber playerNumber = new PlayerNumber("216");
 
         // when
-        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(computerNumber, playerNumber);
 
         // then
         Assertions.assertTrue(referee.isOnlyBall());
@@ -138,10 +149,10 @@ class RefereeTest {
     @Test
     public void 스트라이크만_있는_경우_판별_테스트() {
         // given
-        final String inputNumber = "145";
+        final PlayerNumber playerNumber = new PlayerNumber("145");
 
         // when
-        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(computerNumber, playerNumber);
 
         // then
         Assertions.assertTrue(referee.isOnlyStrike());
@@ -150,10 +161,10 @@ class RefereeTest {
     @Test
     public void 둘_다_있는_경우_판별_테스트() {
         // given
-        final String inputNumber = "132";
+        final PlayerNumber playerNumber = new PlayerNumber("132");
 
         // when
-        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(computerNumber, playerNumber);
 
         // then
         Assertions.assertTrue(referee.isStrikeAndBall());
@@ -162,10 +173,10 @@ class RefereeTest {
     @Test
     public void 쓰리_스트라이크_판별_테스트() {
         // given
-        final String inputNumber = "123";
+        final PlayerNumber playerNumber = new PlayerNumber("123");
 
         // when
-        final Referee referee = Referee.calculateBallAndStrikeNumber(RANDOM_NUMBER, inputNumber);
+        final Referee referee = Referee.calculateBallAndStrikeNumber(computerNumber, playerNumber);
 
         // then
         Assertions.assertTrue(referee.isThreeStrike());
