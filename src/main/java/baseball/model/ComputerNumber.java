@@ -8,8 +8,7 @@ public class ComputerNumber {
         this.computerNumber = computerNumber;
     }
 
-    public static ComputerNumber create() {
-        final RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.create();
+    public static ComputerNumber create(final RandomNumberGenerator randomNumberGenerator) {
         return new ComputerNumber(randomNumberGenerator.getStringRandomNumbers());
     }
 

@@ -4,6 +4,7 @@ import baseball.model.ComputerNumber;
 import baseball.model.Constants;
 import baseball.model.InputNumberValidator;
 import baseball.model.PlayerNumber;
+import baseball.model.RandomNumberGenerator;
 import baseball.model.Referee;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -29,7 +30,7 @@ public class BaseballGameController {
     }
 
     private void playSingleBaseballGame() {
-        final ComputerNumber computerNumber = ComputerNumber.create();
+        final ComputerNumber computerNumber = ComputerNumber.create(RandomNumberGenerator.create());
 
         do {
             outputView.printMessageToInputNumbers();
