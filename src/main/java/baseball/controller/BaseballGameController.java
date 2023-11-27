@@ -29,7 +29,7 @@ public class BaseballGameController {
     }
 
     private void playSingleBaseballGame() {
-        final ComputerNumber computerNumber = new ComputerNumber();
+        final ComputerNumber computerNumber = ComputerNumber.create();
 
         do {
             outputView.printMessageToInputNumbers();

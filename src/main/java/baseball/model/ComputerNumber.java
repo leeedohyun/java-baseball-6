@@ -2,17 +2,15 @@ package baseball.model;
 
 public class ComputerNumber {
 
-    private static final String EMPTY_STRING = "";
+    private final String computerNumber;
 
-    private String computerNumber = EMPTY_STRING;
-
-    public ComputerNumber() {
-        computerNumber = generateRandomNumbers();
+    private ComputerNumber(final String computerNumber) {
+        this.computerNumber = computerNumber;
     }
 
-    private String generateRandomNumbers() {
+    public static ComputerNumber create() {
         final RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.create();
-        return randomNumberGenerator.getStringRandomNumbers();
+        return new ComputerNumber(randomNumberGenerator.getStringRandomNumbers());
     }
 
     public char getOneNumberByIndex(final int index) {
