@@ -2,6 +2,7 @@ package baseball.model;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class PlayerNumberTest {
@@ -40,5 +41,18 @@ class PlayerNumberTest {
     public void 입력한_숫자가_1에서_9사이의_숫자가_아니면_예외_발생() {
         assertThatThrownBy(() -> new PlayerNumber("012"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 입력한_숫자에서_인덱스에_위치한_숫자찾기_테스트() {
+        // given
+        final PlayerNumber playerNumber = new PlayerNumber("153");
+        final int index = 1;
+
+        // when
+        final char oneNumberByIndex = playerNumber.getOneNumberByIndex(index);
+
+        // then
+        Assertions.assertEquals(oneNumberByIndex, '5');
     }
 }
