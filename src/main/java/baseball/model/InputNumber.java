@@ -6,6 +6,8 @@ import java.util.stream.IntStream;
 
 public class InputNumber {
 
+    private static final int NUMBER_OF_NUMBERS = 3;
+
     private final List<Integer> numbers;
 
     private InputNumber(final List<Integer> numbers) {
@@ -16,12 +18,7 @@ public class InputNumber {
         if (hasDuplicate(inputNumber)) {
             throw new IllegalArgumentException();
         }
-
-        final List<Integer> numbers = IntStream.range(0, 3)
-                .mapToObj(i -> Character.getNumericValue(inputNumber.charAt(i)))
-                .toList();
-
-        return new InputNumber(numbers);
+        return new InputNumber(toList(inputNumber));
     }
 
     public List<Integer> getNumbers() {
@@ -29,10 +26,16 @@ public class InputNumber {
     }
 
     private static boolean hasDuplicate(final String inputNumber) {
-        final long count = IntStream.range(0, 3)
+        final long count = IntStream.range(0, NUMBER_OF_NUMBERS)
                 .mapToObj(inputNumber::charAt)
                 .distinct()
                 .count();
         return count != inputNumber.length();
+    }
+
+    private static List<Integer> toList(final String inputNumber) {
+        return IntStream.range(0, NUMBER_OF_NUMBERS)
+                .mapToObj(i -> Character.getNumericValue(inputNumber.charAt(i)))
+                .toList();
     }
 }
