@@ -2,6 +2,8 @@ package baseball.model;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class InputNumberTest {
 
@@ -28,15 +30,15 @@ public class InputNumberTest {
                 .contains(4, 5, 6);
     }
 
-    @Test
-    void 서로_다른_3개의_숫자가_아닌_경우_예외가_발생한다() {
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> InputNumber.create("112"));
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> InputNumber.create("119"));
+    @ParameterizedTest
+    @ValueSource(strings = {"112", "119"})
+    void 서로_다른_3개의_숫자가_아닌_경우_예외가_발생한다(final String input) {
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> InputNumber.create(input));
     }
 
-    @Test
-    void 숫자의_범위를_벗어나면_예외가_발생한다() {
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> InputNumber.create("012"));
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> InputNumber.create("097"));
+    @ParameterizedTest
+    @ValueSource(strings = {"012", "097"})
+    void 숫자의_범위를_벗어나면_예외가_발생한다(final String input) {
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> InputNumber.create(input));
     }
 }
