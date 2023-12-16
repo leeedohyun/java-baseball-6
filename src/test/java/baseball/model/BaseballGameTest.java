@@ -88,6 +88,20 @@ public class BaseballGameTest {
         Assertions.assertEquals(3, ballNumber);
     }
 
+    @ParameterizedTest
+    @MethodSource("provideNothingTestData")
+    void 낫싱(final List<Integer> inputNumber, final List<Integer> randomNumber) {
+        // when
+        final BaseballGame baseballGame = new BaseballGame();
+        final int strikeNumber = baseballGame.countStrike(inputNumber, randomNumber);
+        final int ballNumber = baseballGame.countBall(inputNumber, randomNumber);
+
+        final boolean nothing = baseballGame.isNothing(strikeNumber, ballNumber);
+
+        // then
+        Assertions.assertTrue(nothing);
+    }
+
     private static Stream<Arguments> provideStrikeTestData() {
         return Stream.of(
                 Arguments.of(List.of(1, 2, 3), List.of(1, 4, 5)),
@@ -98,5 +112,12 @@ public class BaseballGameTest {
         return Stream.of(
                 Arguments.of(List.of(1, 2, 3), List.of(6, 1, 7)),
                 Arguments.of(List.of(4, 5, 6), List.of(6, 1, 7)));
+    }
+
+    private static Stream<Arguments> provideNothingTestData() {
+        return Stream.of(
+                Arguments.of(List.of(1, 2, 3), List.of(4, 5, 6)),
+                Arguments.of(List.of(7, 8, 9), List.of(1, 3, 5)),
+                Arguments.of(List.of(6, 2, 3), List.of(9, 1, 5)));
     }
 }
