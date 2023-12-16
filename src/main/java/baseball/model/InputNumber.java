@@ -18,7 +18,13 @@ public class InputNumber {
         if (hasDuplicate(inputNumber)) {
             throw new IllegalArgumentException();
         }
-        return new InputNumber(toList(inputNumber));
+        final List<Integer> numbers = toList(inputNumber);
+        boolean isNotInRange = numbers.stream()
+                .anyMatch(i -> i < 1 || i > 9);
+        if (isNotInRange) {
+            throw new IllegalArgumentException();
+        }
+        return new InputNumber(numbers);
     }
 
     public List<Integer> getNumbers() {
