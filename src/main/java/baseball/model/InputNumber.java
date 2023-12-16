@@ -1,12 +1,13 @@
 package baseball.model;
 
+import static baseball.model.BaseballConstants.NUMBER_OF_NUMBERS;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class InputNumber {
 
-    private static final int NUMBER_OF_NUMBERS = 3;
     private static final int MIN_RANGE = 1;
     private static final int MAX_RANGE = 9;
 
