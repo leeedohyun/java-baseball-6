@@ -1,7 +1,11 @@
 package baseball.model;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class RetryOrEndTest {
 
@@ -29,5 +33,15 @@ public class RetryOrEndTest {
 
         // then
         Assertions.assertFalse(isEnd);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 0, 4, 6})
+    void 일과_이를_제외한_숫자를_입력하면_예외가_발생한다(final int command) {
+        // when
+        final RetryOrEnd retryOrEnd = new RetryOrEnd();
+
+        // then
+        assertThatIllegalArgumentException().isThrownBy(() -> retryOrEnd.canRetry(command));
     }
 }
