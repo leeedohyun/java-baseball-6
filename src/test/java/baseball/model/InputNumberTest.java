@@ -33,4 +33,10 @@ public class InputNumberTest {
         Assertions.assertThatIllegalArgumentException().isThrownBy(() -> InputNumber.create("112"));
         Assertions.assertThatIllegalArgumentException().isThrownBy(() -> InputNumber.create("119"));
     }
+
+    @Test
+    void 숫자의_범위를_벗어나면_예외가_발생한다() {
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> InputNumber.create("012"));
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> InputNumber.create("097"));
+    }
 }
