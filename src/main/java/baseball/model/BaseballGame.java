@@ -17,4 +17,8 @@ public class BaseballGame {
                         && randomNumber.contains(inputNumber.get(i)))
                 .count();
     }
+
+    public boolean isNothing(final int strikeNumber, final int ballNumber) {
+        return strikeNumber == 0 && ballNumber == 0;
+    }
 }
