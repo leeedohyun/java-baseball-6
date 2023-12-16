@@ -12,9 +12,9 @@ public class BaseballGameTest {
 
     @ParameterizedTest
     @MethodSource("provideStrikeTestData")
-    void 원_스트라이크(List<Integer> inputNumber, List<Integer> randomNumber) {
+    void 원_스트라이크(final List<Integer> inputNumber, final List<Integer> randomNumber) {
         // when
-        BaseballGame baseballGame = new BaseballGame();
+        final BaseballGame baseballGame = new BaseballGame();
         final int strikeNumber = baseballGame.countStrike(inputNumber, randomNumber);
 
         // then
@@ -28,7 +28,7 @@ public class BaseballGameTest {
         final List<Integer> randomNumber = List.of(1, 2, 5);
 
         // when
-        BaseballGame baseballGame = new BaseballGame();
+        final BaseballGame baseballGame = new BaseballGame();
         final int strikeNumber = baseballGame.countStrike(inputNumber, randomNumber);
 
         // then
@@ -42,36 +42,22 @@ public class BaseballGameTest {
         final List<Integer> randomNumber = List.of(1, 2, 3);
 
         // when
-        BaseballGame baseballGame = new BaseballGame();
+        final BaseballGame baseballGame = new BaseballGame();
         final int strikeNumber = baseballGame.countStrike(inputNumber, randomNumber);
 
         // then
         Assertions.assertEquals(3, strikeNumber);
     }
 
-    @Test
-    void 원_볼() {
-        // given
-        final List<Integer> inputNumber = List.of(1, 2, 3);
-        final List<Integer> randomNumber = List.of(6, 1, 7);
-
+    @ParameterizedTest
+    @MethodSource("provideBallTestData")
+    void 원_볼(final List<Integer> inputNumber, final List<Integer> randomNumber) {
         // when
-        BaseballGame baseballGame = new BaseballGame();
+        final BaseballGame baseballGame = new BaseballGame();
         final int ballNumber = baseballGame.countBall(inputNumber, randomNumber);
 
         // then
         Assertions.assertEquals(1, ballNumber);
-
-        // given
-        final List<Integer> inputNumber2 = List.of(4, 5, 6);
-        final List<Integer> randomNumber2 = List.of(6, 1, 7);
-
-        // when
-        BaseballGame baseballGame2 = new BaseballGame();
-        final int ballNumber2 = baseballGame2.countBall(inputNumber2, randomNumber2);
-
-        // then
-        Assertions.assertEquals(1, ballNumber2);
     }
 
     @Test
@@ -81,7 +67,7 @@ public class BaseballGameTest {
         final List<Integer> randomNumber = List.of(6, 1, 2);
 
         // when
-        BaseballGame baseballGame = new BaseballGame();
+        final BaseballGame baseballGame = new BaseballGame();
         final int ballNumber = baseballGame.countBall(inputNumber, randomNumber);
 
         // then
@@ -95,7 +81,7 @@ public class BaseballGameTest {
         final List<Integer> randomNumber = List.of(2, 3, 1);
 
         // when
-        BaseballGame baseballGame = new BaseballGame();
+        final BaseballGame baseballGame = new BaseballGame();
         final int ballNumber = baseballGame.countBall(inputNumber, randomNumber);
 
         // then
@@ -106,5 +92,11 @@ public class BaseballGameTest {
         return Stream.of(
                 Arguments.of(List.of(1, 2, 3), List.of(1, 4, 5)),
                 Arguments.of(List.of(1, 2, 3), List.of(6, 2, 5)));
+    }
+
+    private static Stream<Arguments> provideBallTestData() {
+        return Stream.of(
+                Arguments.of(List.of(1, 2, 3), List.of(6, 1, 7)),
+                Arguments.of(List.of(4, 5, 6), List.of(6, 1, 7)));
     }
 }
