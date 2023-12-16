@@ -25,4 +25,8 @@ public class RandomNumber {
         }
         return new RandomNumber(computer);
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
