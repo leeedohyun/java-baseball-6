@@ -7,7 +7,14 @@ public class BaseballGame {
 
     public int countStrike(final List<Integer> inputNumber, final List<Integer> randomNumber) {
         return (int) IntStream.range(0, BaseballConstants.NUMBER_OF_NUMBERS)
-                .filter(i -> inputNumber.get(i).equals(randomNumber.get(i)))
+                .filter(i -> randomNumber.get(i).equals(inputNumber.get(i)))
+                .count();
+    }
+
+    public int countBall(final List<Integer> inputNumber, final List<Integer> randomNumber) {
+        return (int) IntStream.range(0, BaseballConstants.NUMBER_OF_NUMBERS)
+                .filter(i -> !inputNumber.get(i).equals(randomNumber.get(i))
+                        && randomNumber.contains(inputNumber.get(i)))
                 .count();
     }
 }
