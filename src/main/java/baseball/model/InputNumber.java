@@ -7,6 +7,8 @@ import java.util.stream.IntStream;
 public class InputNumber {
 
     private static final int NUMBER_OF_NUMBERS = 3;
+    private static final int MIN_RANGE = 1;
+    private static final int MAX_RANGE = 9;
 
     private final List<Integer> numbers;
 
@@ -15,13 +17,12 @@ public class InputNumber {
     }
 
     public static InputNumber create(final String inputNumber) {
+        final List<Integer> numbers = toList(inputNumber);
+
         if (hasDuplicate(inputNumber)) {
             throw new IllegalArgumentException();
         }
-        final List<Integer> numbers = toList(inputNumber);
-        boolean isNotInRange = numbers.stream()
-                .anyMatch(i -> i < 1 || i > 9);
-        if (isNotInRange) {
+        if (isNotInRange(numbers)) {
             throw new IllegalArgumentException();
         }
         return new InputNumber(numbers);
@@ -43,5 +44,10 @@ public class InputNumber {
         return IntStream.range(0, NUMBER_OF_NUMBERS)
                 .mapToObj(i -> Character.getNumericValue(inputNumber.charAt(i)))
                 .toList();
+    }
+
+    private static boolean isNotInRange(final List<Integer> numbers) {
+        return numbers.stream()
+                .anyMatch(number -> number < MIN_RANGE || number > MAX_RANGE);
     }
 }
