@@ -11,19 +11,15 @@ public class InputNumber {
     private final List<Integer> numbers;
 
     private InputNumber(final List<Integer> numbers) {
+        validateInRange(numbers);
         this.numbers = numbers;
     }
 
     public static InputNumber create(final String inputNumber) {
-        final List<Integer> numbers = toList(inputNumber);
-
         if (hasDuplicate(inputNumber)) {
             throw new IllegalArgumentException();
         }
-        if (isNotInRange(numbers)) {
-            throw new IllegalArgumentException();
-        }
-        return new InputNumber(numbers);
+        return new InputNumber(toList(inputNumber));
     }
 
     public List<Integer> getNumbers() {
@@ -42,6 +38,12 @@ public class InputNumber {
         return IntStream.range(0, NUMBER_OF_NUMBERS)
                 .mapToObj(i -> Character.getNumericValue(inputNumber.charAt(i)))
                 .toList();
+    }
+
+    private static void validateInRange(final List<Integer> numbers) {
+        if (isNotInRange(numbers)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static boolean isNotInRange(final List<Integer> numbers) {
