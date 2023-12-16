@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.BaseballConstants;
 import baseball.model.BaseballGame;
 import baseball.model.InputNumber;
 import baseball.model.RandomNumber;
@@ -36,7 +37,8 @@ public class BaseballController {
             final int ball = baseballGame.countBall(inputNumber.getNumbers(), randomNumber.getNumbers());
 
             outputView.printResult(strike, ball);
-            if (strike == 3) {
+
+            if (strike == BaseballConstants.THREE_STRIKE) {
                 final RetryOrEnd retryOrEnd = new RetryOrEnd();
                 return retryOrEnd.canRetry(inputView.inputCommand());
             }

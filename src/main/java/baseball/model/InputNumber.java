@@ -8,9 +8,6 @@ import java.util.stream.IntStream;
 
 public class InputNumber {
 
-    private static final int MIN_RANGE = 1;
-    private static final int MAX_RANGE = 9;
-
     private final List<Integer> numbers;
 
     private InputNumber(final List<Integer> numbers) {
@@ -49,6 +46,6 @@ public class InputNumber {
 
     private static boolean isNotInRange(final List<Integer> numbers) {
         return numbers.stream()
-                .anyMatch(number -> number < MIN_RANGE || number > MAX_RANGE);
+                .anyMatch(number -> number < BaseballConstants.MIN_RANGE || number > BaseballConstants.MAX_RANGE);
     }
 }
