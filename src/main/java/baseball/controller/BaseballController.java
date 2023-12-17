@@ -41,8 +41,7 @@ public class BaseballController {
 
             if (strike == BaseballConstants.THREE_STRIKE) {
                 outputView.printThreeStrike(strike);
-                final RetryOrEnd retryOrEnd = new RetryOrEnd();
-                return retryOrEnd.canRetry(inputView.inputCommand());
+                return RetryOrEnd.canRetry(inputView.inputCommand());
             }
         }
     }
