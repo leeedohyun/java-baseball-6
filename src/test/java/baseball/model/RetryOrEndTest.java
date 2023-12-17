@@ -15,8 +15,7 @@ public class RetryOrEndTest {
         final int command = 1;
 
         // when
-        final RetryOrEnd retryOrEnd = new RetryOrEnd();
-        final boolean canRetry = retryOrEnd.canRetry(command);
+        final boolean canRetry = RetryOrEnd.canRetry(command);
 
         // then
         Assertions.assertTrue(canRetry);
@@ -28,8 +27,7 @@ public class RetryOrEndTest {
         final int command = 2;
 
         // when
-        final RetryOrEnd retryOrEnd = new RetryOrEnd();
-        final boolean isEnd = retryOrEnd.canRetry(command);
+        final boolean isEnd = RetryOrEnd.canRetry(command);
 
         // then
         Assertions.assertFalse(isEnd);
@@ -38,10 +36,6 @@ public class RetryOrEndTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, 0, 4, 6})
     void 일과_이를_제외한_숫자를_입력하면_예외가_발생한다(final int command) {
-        // when
-        final RetryOrEnd retryOrEnd = new RetryOrEnd();
-
-        // then
-        assertThatIllegalArgumentException().isThrownBy(() -> retryOrEnd.canRetry(command));
+        assertThatIllegalArgumentException().isThrownBy(() -> RetryOrEnd.canRetry(command));
     }
 }
