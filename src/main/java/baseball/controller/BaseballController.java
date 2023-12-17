@@ -22,6 +22,7 @@ public class BaseballController {
 
     public void play() {
         outputView.printStartMessage();
+
         while (true) {
             final RandomNumber randomNumber = RandomNumber.create();
             if (!playOne(randomNumber)) {
@@ -39,6 +40,7 @@ public class BaseballController {
             outputView.printResult(strike, ball);
 
             if (strike == BaseballConstants.THREE_STRIKE) {
+                outputView.printThreeStrike(strike);
                 final RetryOrEnd retryOrEnd = new RetryOrEnd();
                 return retryOrEnd.canRetry(inputView.inputCommand());
             }
