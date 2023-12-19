@@ -4,6 +4,7 @@ import baseball.model.BaseballConstants;
 import baseball.model.BaseballGame;
 import baseball.model.InputNumber;
 import baseball.model.RandomNumber;
+import baseball.model.RandomNumberGenerator;
 import baseball.model.RetryOrEnd;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -24,7 +25,7 @@ public class BaseballController {
         outputView.printStartMessage();
 
         while (true) {
-            final RandomNumber randomNumber = RandomNumber.create();
+            final RandomNumber randomNumber = RandomNumber.create(RandomNumberGenerator.generate());
             if (!playOne(randomNumber)) {
                 break;
             }

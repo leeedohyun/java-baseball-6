@@ -1,7 +1,5 @@
 package baseball.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,16 +11,8 @@ public class RandomNumber {
         this.numbers = numbers;
     }
 
-    public static RandomNumber create() {
-        final List<Integer> computer = new ArrayList<>();
-        while (computer.size() < BaseballConstants.NUMBER_OF_NUMBERS) {
-            final int randomNumber = Randoms.pickNumberInRange(BaseballConstants.MIN_RANGE,
-                    BaseballConstants.MAX_RANGE);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return new RandomNumber(computer);
+    public static RandomNumber create(final List<Integer> numbers) {
+        return new RandomNumber(numbers);
     }
 
     public List<Integer> getNumbers() {
