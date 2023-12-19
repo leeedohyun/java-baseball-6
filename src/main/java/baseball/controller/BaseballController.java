@@ -35,8 +35,8 @@ public class BaseballController {
     private boolean playOne(final RandomNumber randomNumber) {
         while (true) {
             final InputNumber inputNumber = InputNumber.create(inputView.inputNumber());
-            final int strike = baseballGame.countStrike(inputNumber.getNumbers(), randomNumber.getNumbers());
-            final int ball = baseballGame.countBall(inputNumber.getNumbers(), randomNumber.getNumbers());
+            final int strike = baseballGame.countStrike(inputNumber, randomNumber);
+            final int ball = baseballGame.countBall(inputNumber, randomNumber);
 
             outputView.printResult(strike, ball);
 

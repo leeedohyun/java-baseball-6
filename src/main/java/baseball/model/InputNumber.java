@@ -22,6 +22,10 @@ public class InputNumber {
         return new InputNumber(toList(inputNumber));
     }
 
+    public int getInputNumberByIndex(final int index) {
+        return numbers.get(index);
+    }
+
     public List<Integer> getNumbers() {
         return Collections.unmodifiableList(numbers);
     }

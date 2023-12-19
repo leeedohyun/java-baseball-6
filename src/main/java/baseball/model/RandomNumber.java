@@ -18,4 +18,12 @@ public class RandomNumber {
     public List<Integer> getNumbers() {
         return Collections.unmodifiableList(numbers);
     }
+
+    public int getRandomNumberByIndex(final int index) {
+        return numbers.get(index);
+    }
+
+    public boolean hasNumber(final int number) {
+        return numbers.contains(number);
+    }
 }
