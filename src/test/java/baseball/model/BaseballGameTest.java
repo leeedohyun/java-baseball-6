@@ -12,7 +12,7 @@ public class BaseballGameTest {
 
     @ParameterizedTest
     @MethodSource("provideStrikeTestData")
-    void 원_스트라이크(final List<Integer> inputNumber, final List<Integer> randomNumber) {
+    void 원_스트라이크(final InputNumber inputNumber, final RandomNumber randomNumber) {
         // when
         final BaseballGame baseballGame = new BaseballGame();
         final int strikeNumber = baseballGame.countStrike(inputNumber, randomNumber);
@@ -24,8 +24,8 @@ public class BaseballGameTest {
     @Test
     void 투_스트라이크() {
         // given
-        final List<Integer> inputNumber = List.of(1, 2, 3);
-        final List<Integer> randomNumber = List.of(1, 2, 5);
+        final InputNumber inputNumber = InputNumber.create("123");
+        final RandomNumber randomNumber = RandomNumber.create(List.of(1, 2, 5));
 
         // when
         final BaseballGame baseballGame = new BaseballGame();
@@ -38,8 +38,8 @@ public class BaseballGameTest {
     @Test
     void 쓰리_스트라이크() {
         // given
-        final List<Integer> inputNumber = List.of(1, 2, 3);
-        final List<Integer> randomNumber = List.of(1, 2, 3);
+        final InputNumber inputNumber = InputNumber.create("123");
+        final RandomNumber randomNumber = RandomNumber.create(List.of(1, 2, 3));
 
         // when
         final BaseballGame baseballGame = new BaseballGame();
@@ -51,7 +51,7 @@ public class BaseballGameTest {
 
     @ParameterizedTest
     @MethodSource("provideBallTestData")
-    void 원_볼(final List<Integer> inputNumber, final List<Integer> randomNumber) {
+    void 원_볼(final InputNumber inputNumber, final RandomNumber randomNumber) {
         // when
         final BaseballGame baseballGame = new BaseballGame();
         final int ballNumber = baseballGame.countBall(inputNumber, randomNumber);
@@ -63,8 +63,8 @@ public class BaseballGameTest {
     @Test
     void 투_볼() {
         // given
-        final List<Integer> inputNumber = List.of(1, 2, 3);
-        final List<Integer> randomNumber = List.of(6, 1, 2);
+        final InputNumber inputNumber = InputNumber.create("123");
+        final RandomNumber randomNumber = RandomNumber.create(List.of(6, 1, 2));
 
         // when
         final BaseballGame baseballGame = new BaseballGame();
@@ -77,8 +77,8 @@ public class BaseballGameTest {
     @Test
     void 쓰리_볼() {
         // given
-        final List<Integer> inputNumber = List.of(1, 2, 3);
-        final List<Integer> randomNumber = List.of(2, 3, 1);
+        final InputNumber inputNumber = InputNumber.create("123");
+        final RandomNumber randomNumber = RandomNumber.create(List.of(2, 3, 1));
 
         // when
         final BaseballGame baseballGame = new BaseballGame();
@@ -90,7 +90,7 @@ public class BaseballGameTest {
 
     @ParameterizedTest
     @MethodSource("provideNothingTestData")
-    void 낫싱(final List<Integer> inputNumber, final List<Integer> randomNumber) {
+    void 낫싱(final InputNumber inputNumber, final RandomNumber randomNumber) {
         // when
         final BaseballGame baseballGame = new BaseballGame();
         final int strikeNumber = baseballGame.countStrike(inputNumber, randomNumber);
@@ -104,20 +104,20 @@ public class BaseballGameTest {
 
     private static Stream<Arguments> provideStrikeTestData() {
         return Stream.of(
-                Arguments.of(List.of(1, 2, 3), List.of(1, 4, 5)),
-                Arguments.of(List.of(1, 2, 3), List.of(6, 2, 5)));
+                Arguments.of(InputNumber.create("123"), RandomNumber.create(List.of(1, 4, 5))),
+                Arguments.of(InputNumber.create("123"), RandomNumber.create(List.of(6, 2, 5))));
     }
 
     private static Stream<Arguments> provideBallTestData() {
         return Stream.of(
-                Arguments.of(List.of(1, 2, 3), List.of(6, 1, 7)),
-                Arguments.of(List.of(4, 5, 6), List.of(6, 1, 7)));
+                Arguments.of(InputNumber.create("123"), RandomNumber.create(List.of(6, 1, 7))),
+                Arguments.of(InputNumber.create("456"), RandomNumber.create(List.of(6, 1, 7))));
     }
 
     private static Stream<Arguments> provideNothingTestData() {
         return Stream.of(
-                Arguments.of(List.of(1, 2, 3), List.of(4, 5, 6)),
-                Arguments.of(List.of(7, 8, 9), List.of(1, 3, 5)),
-                Arguments.of(List.of(6, 2, 3), List.of(9, 1, 5)));
+                Arguments.of(InputNumber.create("123"), RandomNumber.create(List.of(4, 5, 6))),
+                Arguments.of(InputNumber.create("789"), RandomNumber.create(List.of(1, 3, 5))),
+                Arguments.of(InputNumber.create("623"), RandomNumber.create(List.of(9, 1, 5))));
     }
 }
