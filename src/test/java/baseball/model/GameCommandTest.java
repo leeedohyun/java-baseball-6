@@ -12,10 +12,10 @@ class GameCommandTest {
     @Test
     void 일을_입력하면_재시작() {
         // given
-        final int command = 1;
+        final GameCommand gameCommand = new GameCommand(1);
 
         // when
-        final boolean canRetry = GameCommand.canRetry(command);
+        final boolean canRetry = gameCommand.canRetry();
 
         // then
         Assertions.assertTrue(canRetry);
@@ -24,10 +24,10 @@ class GameCommandTest {
     @Test
     void 이를_입력하면_종료() {
         // given
-        final int command = 2;
+        final GameCommand gameCommand = new GameCommand(2);
 
         // when
-        final boolean isEnd = GameCommand.canRetry(command);
+        final boolean isEnd = gameCommand.canRetry();
 
         // then
         Assertions.assertFalse(isEnd);
@@ -36,6 +36,6 @@ class GameCommandTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, 0, 4, 6})
     void 일과_이를_제외한_숫자를_입력하면_예외가_발생한다(final int command) {
-        assertThatIllegalArgumentException().isThrownBy(() -> GameCommand.canRetry(command));
+        assertThatIllegalArgumentException().isThrownBy(() -> new GameCommand(command));
     }
 }
