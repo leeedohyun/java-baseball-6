@@ -12,12 +12,10 @@ public class BaseballController {
 
     private static final int THREE_STRIKE = 3;
 
-    private final BaseballGame baseballGame;
     private final InputView inputView;
     private final OutputView outputView;
 
-    public BaseballController(final BaseballGame baseballGame, final InputView inputView, final OutputView outputView) {
-        this.baseballGame = baseballGame;
+    public BaseballController(final InputView inputView, final OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -36,8 +34,10 @@ public class BaseballController {
     private boolean playOne(final RandomNumber randomNumber) {
         while (true) {
             final InputNumber inputNumber = InputNumber.create(inputView.inputNumber());
-            final int strike = baseballGame.countStrike(inputNumber, randomNumber);
-            final int ball = baseballGame.countBall(inputNumber, randomNumber);
+            final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
+            
+            final int strike = baseballGame.countStrike();
+            final int ball = baseballGame.countBall();
 
             outputView.printResult(strike, ball);
 
