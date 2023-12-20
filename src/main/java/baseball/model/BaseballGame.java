@@ -14,14 +14,17 @@ public class BaseballGame {
 
     public int countStrike() {
         return (int) IntStream.range(0, BaseballConstants.NUMBER_OF_NUMBERS)
-                .filter(i -> randomNumber.getRandomNumberByIndex(i) == inputNumber.getInputNumberByIndex(i))
+                .filter(this::isStrike)
                 .count();
     }
 
     public int countBall() {
         return (int) IntStream.range(0, BaseballConstants.NUMBER_OF_NUMBERS)
-                .filter(i -> inputNumber.getInputNumberByIndex(i) != randomNumber.getRandomNumberByIndex(i)
-                        && randomNumber.hasNumber(inputNumber.getInputNumberByIndex(i)))
+                .filter(i -> !isStrike(i) && randomNumber.hasNumber(inputNumber.getInputNumberByIndex(i)))
                 .count();
+    }
+
+    private boolean isStrike(final int index) {
+        return randomNumber.getRandomNumberByIndex(index) == inputNumber.getInputNumberByIndex(index);
     }
 }
