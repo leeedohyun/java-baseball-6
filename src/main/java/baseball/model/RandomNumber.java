@@ -1,6 +1,5 @@
 package baseball.model;
 
-import java.util.Collections;
 import java.util.List;
 
 public class RandomNumber {
@@ -13,10 +12,6 @@ public class RandomNumber {
 
     public static RandomNumber create(final RandomNumberGenerator randomNumberGenerator) {
         return new RandomNumber(randomNumberGenerator.generate());
-    }
-
-    public List<Integer> getNumbers() {
-        return Collections.unmodifiableList(numbers);
     }
 
     public int getRandomNumberByIndex(final int index) {

@@ -1,6 +1,7 @@
 package baseball.model;
 
 import java.util.List;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -18,7 +19,8 @@ class RandomNumberTest {
         final RandomNumber randomNumber = RandomNumber.create(mock);
 
         // then
-        Assertions.assertThat(randomNumber.getNumbers()).hasSize(3)
-                .contains(1, 2, 3);
+        Assertions.assertThat(randomNumber.hasNumber(1)).isTrue();
+        Assertions.assertThat(randomNumber.hasNumber(2)).isTrue();
+        Assertions.assertThat(randomNumber.hasNumber(3)).isTrue();
     }
 }
