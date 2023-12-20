@@ -43,7 +43,9 @@ public class BaseballController {
 
             if (strike == THREE_STRIKE) {
                 outputView.printThreeStrike(strike);
-                return GameCommand.canRetry(inputView.inputCommand());
+
+                final GameCommand gameCommand = new GameCommand(inputView.inputCommand());
+                return gameCommand.canRetry();
             }
         }
     }
