@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class InputNumberTest {
+class InputNumberTest {
 
     @Test
     void 서로_다른_3개의_숫자를_입력하면_InputNumber_객체가_생성된다() {

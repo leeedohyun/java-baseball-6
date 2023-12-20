@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class RetryOrEndTest {
+class RetryOrEndTest {
 
     @Test
     void 일을_입력하면_재시작() {
