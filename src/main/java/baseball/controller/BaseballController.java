@@ -1,10 +1,10 @@
 package baseball.controller;
 
 import baseball.model.BaseballGame;
+import baseball.model.GameCommand;
 import baseball.model.InputNumber;
 import baseball.model.RandomNumber;
 import baseball.model.RandomNumberGenerator;
-import baseball.model.RetryOrEnd;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -35,7 +35,7 @@ public class BaseballController {
         while (true) {
             final InputNumber inputNumber = InputNumber.create(inputView.inputNumber());
             final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
-            
+
             final int strike = baseballGame.countStrike();
             final int ball = baseballGame.countBall();
 
@@ -43,7 +43,7 @@ public class BaseballController {
 
             if (strike == THREE_STRIKE) {
                 outputView.printThreeStrike(strike);
-                return RetryOrEnd.canRetry(inputView.inputCommand());
+                return GameCommand.canRetry(inputView.inputCommand());
             }
         }
     }

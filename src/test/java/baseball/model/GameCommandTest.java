@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class RetryOrEndTest {
+class GameCommandTest {
 
     @Test
     void 일을_입력하면_재시작() {
@@ -15,7 +15,7 @@ class RetryOrEndTest {
         final int command = 1;
 
         // when
-        final boolean canRetry = RetryOrEnd.canRetry(command);
+        final boolean canRetry = GameCommand.canRetry(command);
 
         // then
         Assertions.assertTrue(canRetry);
@@ -27,7 +27,7 @@ class RetryOrEndTest {
         final int command = 2;
 
         // when
-        final boolean isEnd = RetryOrEnd.canRetry(command);
+        final boolean isEnd = GameCommand.canRetry(command);
 
         // then
         Assertions.assertFalse(isEnd);
@@ -36,6 +36,6 @@ class RetryOrEndTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, 0, 4, 6})
     void 일과_이를_제외한_숫자를_입력하면_예외가_발생한다(final int command) {
-        assertThatIllegalArgumentException().isThrownBy(() -> RetryOrEnd.canRetry(command));
+        assertThatIllegalArgumentException().isThrownBy(() -> GameCommand.canRetry(command));
     }
 }

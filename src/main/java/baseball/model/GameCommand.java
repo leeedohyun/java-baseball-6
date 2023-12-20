@@ -1,11 +1,11 @@
 package baseball.model;
 
-public class RetryOrEnd {
+public class GameCommand {
 
     private static final int RETRY = 1;
     private static final int END = 2;
 
-    private RetryOrEnd() {
+    private GameCommand() {
     }
 
     public static boolean canRetry(final int command) {
