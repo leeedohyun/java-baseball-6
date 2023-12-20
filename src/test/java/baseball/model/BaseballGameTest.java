@@ -2,6 +2,7 @@ package baseball.model;
 
 import java.util.List;
 import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -109,24 +110,6 @@ class BaseballGameTest {
         Assertions.assertEquals(3, ballNumber);
     }
 
-    @ParameterizedTest
-    @MethodSource("provideNothingTestData")
-    void 낫싱(final InputNumber inputNumber, final List<Integer> number) {
-        // given
-        Mockito.when(mock.generate()).thenReturn(number);
-        final RandomNumber randomNumber = RandomNumber.create(mock);
-
-        // when
-        final BaseballGame baseballGame = new BaseballGame();
-        final int strikeNumber = baseballGame.countStrike(inputNumber, randomNumber);
-        final int ballNumber = baseballGame.countBall(inputNumber, randomNumber);
-
-        final boolean nothing = baseballGame.isNothing(strikeNumber, ballNumber);
-
-        // then
-        Assertions.assertTrue(nothing);
-    }
-
     private static Stream<Arguments> provideStrikeTestData() {
         return Stream.of(
                 Arguments.of(InputNumber.create("123"), List.of(1, 4, 5)),
@@ -137,12 +120,5 @@ class BaseballGameTest {
         return Stream.of(
                 Arguments.of(InputNumber.create("123"), List.of(6, 1, 7)),
                 Arguments.of(InputNumber.create("456"), List.of(6, 1, 7)));
-    }
-
-    private static Stream<Arguments> provideNothingTestData() {
-        return Stream.of(
-                Arguments.of(InputNumber.create("123"), List.of(4, 5, 6)),
-                Arguments.of(InputNumber.create("789"), List.of(1, 3, 5)),
-                Arguments.of(InputNumber.create("623"), List.of(9, 1, 5)));
     }
 }
