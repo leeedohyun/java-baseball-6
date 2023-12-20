@@ -11,8 +11,8 @@ public class RandomNumber {
         this.numbers = numbers;
     }
 
-    public static RandomNumber create(final List<Integer> numbers) {
-        return new RandomNumber(numbers);
+    public static RandomNumber create(final RandomNumberGenerator randomNumberGenerator) {
+        return new RandomNumber(randomNumberGenerator.generate());
     }
 
     public List<Integer> getNumbers() {

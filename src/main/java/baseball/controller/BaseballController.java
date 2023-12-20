@@ -26,7 +26,7 @@ public class BaseballController {
         outputView.printStartMessage();
 
         while (true) {
-            final RandomNumber randomNumber = RandomNumber.create(RandomNumberGenerator.generate());
+            final RandomNumber randomNumber = RandomNumber.create(new RandomNumberGenerator());
             if (!playOne(randomNumber)) {
                 break;
             }

@@ -6,10 +6,7 @@ import java.util.List;
 
 public class RandomNumberGenerator {
 
-    private RandomNumberGenerator() {
-    }
-
-    public static List<Integer> generate() {
+    public List<Integer> generate() {
         final List<Integer> computer = new ArrayList<>();
         while (computer.size() < BaseballConstants.NUMBER_OF_NUMBERS) {
             final int randomNumber = Randoms.pickNumberInRange(BaseballConstants.MIN_RANGE,
