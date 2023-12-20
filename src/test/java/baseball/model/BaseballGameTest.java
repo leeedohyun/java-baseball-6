@@ -22,103 +22,73 @@ class BaseballGameTest {
 
     @ParameterizedTest
     @MethodSource("provideStrikeTestData")
-    void 원_스트라이크(final InputNumber inputNumber, final List<Integer> number) {
-        // given
-        Mockito.when(mock.generate()).thenReturn(number);
-        final RandomNumber randomNumber = RandomNumber.create(mock);
-
-        // when
-        final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
-        final int strikeNumber = baseballGame.countStrike();
-
-        // then
-        Assertions.assertEquals(1, strikeNumber);
+    void 원_스트라이크(final String input, final List<Integer> random) {
+        assertStrikeNumber(input, random, 1);
     }
 
     @Test
     void 투_스트라이크() {
-        // given
-        final InputNumber inputNumber = InputNumber.create("123");
-        Mockito.when(mock.generate()).thenReturn(List.of(1, 2, 5));
-        final RandomNumber randomNumber = RandomNumber.create(mock);
-
-        // when
-        final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
-        final int strikeNumber = baseballGame.countStrike();
-
-        // then
-        Assertions.assertEquals(2, strikeNumber);
+        assertStrikeNumber("123", List.of(1, 2, 5), 2);
     }
 
     @Test
     void 쓰리_스트라이크() {
-        // given
-        final InputNumber inputNumber = InputNumber.create("123");
-        Mockito.when(mock.generate()).thenReturn(List.of(1, 2, 3));
-        final RandomNumber randomNumber = RandomNumber.create(mock);
-
-        // when
-        final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
-        final int strikeNumber = baseballGame.countStrike();
-
-        // then
-        Assertions.assertEquals(3, strikeNumber);
+        assertStrikeNumber("123", List.of(1, 2, 3), 3);
     }
 
     @ParameterizedTest
     @MethodSource("provideBallTestData")
-    void 원_볼(final InputNumber inputNumber, final List<Integer> number) {
-        //given
-        Mockito.when(mock.generate()).thenReturn(number);
-        final RandomNumber randomNumber = RandomNumber.create(mock);
-
-        // when
-        final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
-        final int ballNumber = baseballGame.countBall();
-
-        // then
-        Assertions.assertEquals(1, ballNumber);
+    void 원_볼(final String input, final List<Integer> random) {
+        assertBallNumber(input, random, 1);
     }
 
     @Test
     void 투_볼() {
-        // given
-        final InputNumber inputNumber = InputNumber.create("123");
-        Mockito.when(mock.generate()).thenReturn(List.of(6, 1, 2));
-        final RandomNumber randomNumber = RandomNumber.create(mock);
-
-        // when
-        final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
-        final int ballNumber = baseballGame.countBall();
-
-        // then
-        Assertions.assertEquals(2, ballNumber);
+        assertBallNumber("123", List.of(6, 1, 2), 2);
     }
 
     @Test
     void 쓰리_볼() {
+        assertBallNumber("123", List.of(2, 3, 1), 3);
+    }
+
+    private void assertStrikeNumber(final String input, final List<Integer> random, final int expected) {
         // given
-        final InputNumber inputNumber = InputNumber.create("123");
-        Mockito.when(mock.generate()).thenReturn(List.of(2, 3, 1));
+        final InputNumber inputNumber = InputNumber.create(input);
+        Mockito.when(mock.generate()).thenReturn(random);
         final RandomNumber randomNumber = RandomNumber.create(mock);
 
         // when
         final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
-        final int ballNumber = baseballGame.countBall();
+        final int strikes = baseballGame.countStrike();
 
         // then
-        Assertions.assertEquals(3, ballNumber);
+        Assertions.assertEquals(expected, strikes);
+    }
+
+    private void assertBallNumber(final String input, final List<Integer> random, final int expected) {
+        // given
+        final InputNumber inputNumber = InputNumber.create(input);
+        Mockito.when(mock.generate()).thenReturn(random);
+        final RandomNumber randomNumber = RandomNumber.create(mock);
+
+        // when
+        final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
+        final int balls = baseballGame.countBall();
+
+        // then
+        Assertions.assertEquals(expected, balls);
     }
 
     private static Stream<Arguments> provideStrikeTestData() {
         return Stream.of(
-                Arguments.of(InputNumber.create("123"), List.of(1, 4, 5)),
-                Arguments.of(InputNumber.create("123"), List.of(6, 2, 5)));
+                Arguments.of("123", List.of(1, 4, 5)),
+                Arguments.of("697", List.of(6, 2, 5)));
     }
 
     private static Stream<Arguments> provideBallTestData() {
         return Stream.of(
-                Arguments.of(InputNumber.create("123"), List.of(6, 1, 7)),
-                Arguments.of(InputNumber.create("456"), List.of(6, 1, 7)));
+                Arguments.of("123", List.of(6, 1, 7)),
+                Arguments.of("456", List.of(6, 1, 7)));
     }
 }
