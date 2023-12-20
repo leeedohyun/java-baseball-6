@@ -28,8 +28,8 @@ class BaseballGameTest {
         final RandomNumber randomNumber = RandomNumber.create(mock);
 
         // when
-        final BaseballGame baseballGame = new BaseballGame();
-        final int strikeNumber = baseballGame.countStrike(inputNumber, randomNumber);
+        final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
+        final int strikeNumber = baseballGame.countStrike();
 
         // then
         Assertions.assertEquals(1, strikeNumber);
@@ -43,8 +43,8 @@ class BaseballGameTest {
         final RandomNumber randomNumber = RandomNumber.create(mock);
 
         // when
-        final BaseballGame baseballGame = new BaseballGame();
-        final int strikeNumber = baseballGame.countStrike(inputNumber, randomNumber);
+        final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
+        final int strikeNumber = baseballGame.countStrike();
 
         // then
         Assertions.assertEquals(2, strikeNumber);
@@ -58,8 +58,8 @@ class BaseballGameTest {
         final RandomNumber randomNumber = RandomNumber.create(mock);
 
         // when
-        final BaseballGame baseballGame = new BaseballGame();
-        final int strikeNumber = baseballGame.countStrike(inputNumber, randomNumber);
+        final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
+        final int strikeNumber = baseballGame.countStrike();
 
         // then
         Assertions.assertEquals(3, strikeNumber);
@@ -73,8 +73,8 @@ class BaseballGameTest {
         final RandomNumber randomNumber = RandomNumber.create(mock);
 
         // when
-        final BaseballGame baseballGame = new BaseballGame();
-        final int ballNumber = baseballGame.countBall(inputNumber, randomNumber);
+        final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
+        final int ballNumber = baseballGame.countBall();
 
         // then
         Assertions.assertEquals(1, ballNumber);
@@ -88,8 +88,8 @@ class BaseballGameTest {
         final RandomNumber randomNumber = RandomNumber.create(mock);
 
         // when
-        final BaseballGame baseballGame = new BaseballGame();
-        final int ballNumber = baseballGame.countBall(inputNumber, randomNumber);
+        final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
+        final int ballNumber = baseballGame.countBall();
 
         // then
         Assertions.assertEquals(2, ballNumber);
@@ -103,8 +103,8 @@ class BaseballGameTest {
         final RandomNumber randomNumber = RandomNumber.create(mock);
 
         // when
-        final BaseballGame baseballGame = new BaseballGame();
-        final int ballNumber = baseballGame.countBall(inputNumber, randomNumber);
+        final BaseballGame baseballGame = new BaseballGame(inputNumber, randomNumber);
+        final int ballNumber = baseballGame.countBall();
 
         // then
         Assertions.assertEquals(3, ballNumber);
